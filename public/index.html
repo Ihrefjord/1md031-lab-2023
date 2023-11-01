@@ -60,6 +60,7 @@
         <h2>Costumer Information</h2>
         <p>Fill out your billing and delivery information</p>
         <h3>Delivery Information</h3>
+        <form>
         <p>
           <label for="firstname">Full Name</label><br />
           <input
@@ -93,14 +94,59 @@
         <p>
           <label for="house">House</label><br />
           <input
-            type="text"
+            type="number" 
             id="house"
             name="h"
             required="required"
             placeholder="House number"
           />
         </p>
+        <p>
+          <label for="payment">Choose Payment Option</label><be>
+            <br>
+            <select id="payment" name="pmt">
+                <option selected="selected">Credit Card</option>
+                <option>Swish</option>
+                <option>Klarna</option>
+                <option>Pay with app credits</option>
+            </select>
+        </p>
+        <p>
+          <label for="gender">Select Gender</label><be>
+            <br>
+            <label for="Male">Male</label>
+            <input 
+            type="radio"
+            id="male"
+            name="gender"
+            checked="checked"
+            value="Male"
+            />
+          <br>
+            <label for="Female">Female</label>
+            <input 
+            type="radio" 
+            name="gender" 
+            id="female"
+            value="female"
+            />
+          <br>
+            <label for="Do not wish to provide">Do not wish to provide</label>
+            <input 
+            type="radio" 
+            name="gender" 
+            id="not provide"
+            value="wish not to provide"
+            />
+          
+        </p>
+      </form>
       </section>
+      <button type="submit">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png"
+        style="width:20px;">
+        Send Info
+      </button>
     </main>
     <hr />
     <footer>&copy; 2023 Fantasy Burgers Inc</footer>
