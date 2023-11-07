@@ -1,0 +1,107 @@
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+@media screen and (max-width: 800px) {
+    h1 {
+        font-size: 6vw;
+    }
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+}
+
+#HeadlineAndImage {
+    margin-left:20px;
+    margin-right:20px;
+    
+    height: 200px;
+    overflow: hidden;
+    margin-bottom:10px;
+}
+
+#HeaderImage {
+    opacity: 0.5;
+    width:100%;
+    height: auto;
+}
+
+h1 {
+    position:absolute;
+    margin-top:-750px;
+    margin-left: 370px;
+}
+
+#BurgerSelection {
+    color: darkgreen;
+    border: 2px dashed darkgreen;
+    
+}
+
+#burgerDisplay {
+    margin-left: -6px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 600px 600px 500px;
+    background-color:darkgrey;
+}
+
+#burgerDisplay img {
+    height: auto;
+    width: 300px;
+}
+
+.HellBurger {
+    grid-column: 1;
+    align-self: center;
+}
+
+.Heavenburger {
+    grid-column: 2;
+    align-self: center;
+}
+
+.LeprechaunBurger {
+    grid-column: 3;
+}
+
+.burgerDescription {
+    margin-left: -45px;
+    font-size: small;
+}
+
+.burgerDisplay {
+    margin-right: 100px;
+}
+
+#Allergies {
+    font-weight: bold;
+    color: black;
+}
+
+#allergyList {
+    color: red;
+}
+
+#CheckoutForm {
+    background-color: black;
+    color: white;
+    border: 2px dashed white;
+}
+
+button:hover, input[type="radio"] {
+    background-color:lightslategrey;
+    cursor: pointer;
+}
+
+
+button {
+    margin: 20px 0px 10px 40px
+}
+
+section {
+    margin-left:15px;
+    margin-right:15px;
+    padding-left:20px;
+}
+
