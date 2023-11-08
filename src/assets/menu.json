@@ -1,0 +1,23 @@
+[
+  {
+    "kCal": 1000,
+    "name": "HellBurger",
+    "imageURL": "https://www.ocregister.com/wp-content/uploads/2022/03/OCR-L-FirstStBurger-WBOX-0310-1-1.jpg?w=620",
+    "containsGluten": true,
+    "containsLactose": true
+  },
+  {
+    "kCal": 10,
+    "name": "HeavenBurger",
+    "imageURL": "https://2.bp.blogspot.com/-iuA4duilEos/TvSUrELIbVI/AAAAAAAAAVI/Q42RuNGuFPM/s1600/Screen+shot+2011-12-23+at+9.43.45+AM.png",
+    "containsGluten": false,
+    "containsLactose": false
+  },
+  {
+    "kCal": 10,
+    "name": "LeprechaunBurger",
+    "imageURL": "https://www.burger.vn/wp-content/uploads/2023/05/NAshville-burger-BCB-burgers-Saigon-VIetnam-1-1-500x400.png",
+    "containsGluten": true,
+    "containsLactose": false
+  }
+]
