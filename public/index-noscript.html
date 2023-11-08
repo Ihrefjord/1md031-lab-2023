@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fantasy Burger Online</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="HeadlineAndImage">
+        <img
+          id="HeaderImage"
+          src="https://images.alphacoders.com/131/1319547.png"
+          alt="Fantasy Land"
+          title="Picture of fantasy land"
+        />
+        <h1>Welcome to Fantasy Burger Online</h1>
+      </div>
+    </header>
+    <main>
+      <section id="BurgerSelection">
+        <h2>Select your burger</h2>
+        <p>Choose from the three magical options below</p>
+        <section id="burgerDisplay">
+          <div class="HellBurger" style="display: inline-block">
+            <h3>Hell Burger</h3>
+            <img
+              src="https://www.halsanskok.se/sites/default/files/recipes/277331ea3a1ec983d2e5f33059a92f54_gg_halloween_devil_burger_ig_post_1ff.jpg"
+              alt="Hell Burger"
+              title="Picture of Hell Burger"
+            />
+            <section class="burgerDescription">
+              <ul>
+                <li>Beef patty from animals living in cruel circumstances</li>
+                <li>Strong notes of missery and suffering</li>
+                <li>
+                  <span id="Allergies">Allergies:</span>
+                  <span id="allergyList">Fire, Bones, Sins</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="HeavenBurger" style="display: inline-block">
+            <h3>Heaven Burger</h3>
+            <img
+              src="https://i.ytimg.com/vi/a19EY3YNStA/maxresdefault.jpg"
+              alt="Heaven Burger"
+              title="Picture of Heaven Burger"
+            />
+            <section class="burgerDescription">
+              <ul>
+                <li>Vegetarian, made from peas</li>
+                <li>Light and Fluffy with notes of fresh herbes</li>
+                <li>
+                  <span id="Allergies">Allergies:</span>
+                  <span id="allergyList">Soy, Peace, Tranquility</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="LeprechaunBurger" style="display: inline-block">
+            <h3>Leprechaun Burger</h3>
+            <img
+              src="https://img.freepik.com/premium-photo/st-patricks-holiday-party-invitation-bar-menu-background-irish-st-patricks-day-beer-ale-glasses-snacks-appetizer-green-burger-wooden-bar-table-with-shamrock-clover-coins-leprechaun-hat_136595-20552.jpg?w=360"
+              alt="Leprechaun Burger"
+              title="Picture of Leprechaun Burger"
+            />
+            <section class="burgerDescription">
+              <ul>
+                <li>???-Meat</li>
+                <li>Flavourfoul with clear notes of beer and luck</li>
+                <li>
+                  <span id="Allergies">Allergies:</span>
+                  <span id="allergyList">Leprechauns, Beer, Four-clover</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </section>
+      <section id="CheckoutForm">
+        <h2>Costumer Information</h2>
+        <p>Fill out your billing and delivery information</p>
+        <h3>Delivery Information</h3>
+        <form>
+          <p>
+            <label for="firstname">Full Name</label><br />
+            <input
+              type="text"
+              id="fullname"
+              name="fn"
+              required="required"
+              placeholder="First- and Last name"
+            />
+          </p>
+          <p>
+            <label for="email">E-mail</label><br />
+            <input
+              type="text"
+              id="email"
+              name="em"
+              required="required"
+              placeholder="E-mail address"
+            />
+          </p>
+          <p>
+            <label for="street">Street</label><br />
+            <input
+              type="text"
+              id="street"
+              name="s"
+              required="required"
+              placeholder="Street name"
+            />
+          </p>
+          <p>
+            <label for="house">House</label><br />
+            <input
+              type="number"
+              id="house"
+              name="h"
+              required="required"
+              placeholder="House number"
+            />
+          </p>
+          <p>
+            <label for="payment">Choose Payment Option</label>
+            <br />
+            <select id="payment" name="pmt">
+              <option selected="selected">Credit Card</option>
+              <option>Swish</option>
+              <option>Klarna</option>
+              <option>Pay with app credits</option>
+            </select>
+          </p>
+          <p>
+            <label for="gender">Select Gender</label>
+            <br />
+            <label for="male">Male</label>
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              checked="checked"
+              value="Male"
+            />
+            <br />
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="female" value="Female" />
+            <br />
+            <label for="do not wish to provide">Do not wish to provide</label>
+            <input
+              type="radio"
+              name="gender"
+              id="not provide"
+              value="Do not wish to provide"
+            />
+          </p>
+        </form>
+      </section>
+      <button type="submit">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png"
+          style="width: 20px"
+        />
+        Send Info
+      </button>
+    </main>
+    <hr />
+    <footer>&copy; 2023 Fantasy Burgers Inc All rights Reserved</footer>
+  </body>
+</html>
