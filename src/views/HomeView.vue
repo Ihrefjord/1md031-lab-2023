@@ -27,82 +27,59 @@
       <p>Fill out your billing and delivery information</p>
       <h3>Delivery Information</h3>
       <form>
-        <p>
-          <label for="firstname">Full Name</label><br />
-          <input
-            type="text"
-            id="fullname"
-            name="fn"
-            required="required"
-            placeholder="First- and Last name"
-          />
-        </p>
-        <p>
-          <label for="email">E-mail</label><br />
-          <input
-            type="text"
-            id="email"
-            name="em"
-            required="required"
-            placeholder="E-mail address"
-          />
-        </p>
-        <p>
-          <label for="street">Street</label><br />
-          <input
-            type="text"
-            id="street"
-            name="s"
-            required="required"
-            placeholder="Street name"
-          />
-        </p>
-        <p>
-          <label for="house">House</label><br />
-          <input
-            type="number"
-            id="house"
-            name="h"
-            required="required"
-            placeholder="House number"
-          />
-        </p>
-        <p>
-          <label for="payment">Choose Payment Option</label>
-          <br />
-          <select id="payment" name="pmt">
-            <option selected="selected">Credit Card</option>
-            <option>Swish</option>
-            <option>Klarna</option>
-            <option>Pay with app credits</option>
-          </select>
-        </p>
-        <p>
-          <label for="gender">Select Gender</label>
-          <br />
-          <label for="male">Male</label>
-          <input
-            type="radio"
-            id="male"
-            name="gender"
-            checked="checked"
-            value="Male"
-          />
-          <br />
-          <label for="female">Female</label>
-          <input type="radio" name="gender" id="female" value="Female" />
-          <br />
-          <label for="do not wish to provide">Do not wish to provide</label>
-          <input
-            type="radio"
-            name="gender"
-            id="not provide"
-            value="Do not wish to provide"
-          />
-        </p>
+        <p>Full Name</p>
+        <input
+          v-model="costumerInformation.fullname"
+          placeholder="First- and Last name"
+        />
+
+        <p>E-mail</p>
+        <input
+          v-model="costumerInformation.email"
+          placeholder="E-mail address"
+        />
+
+        <p>Street</p>
+        <input v-model="costumerInformation.street" placeholder="Street name" />
+
+        <p>House</p>
+        <input v-model="costumerInformation.house" placeholder="House number" />
+
+        <p>Choose Payment Option:</p>
+        <select v-model="costumerInformation.payment">
+          <option>Credit Card</option>
+          <option>Swish</option>
+          <option>Klarna</option>
+          <option>Pay with app credits</option>
+        </select>
+
+        <p>Select Gender</p>
+        <label for="male">Male</label>
+        <input
+          type="radio"
+          id="male"
+          v-model="costumerInformation.gender"
+          value="Male"
+        />
+        <br />
+        <label for="female">Female</label>
+        <input
+          type="radio"
+          v-model="costumerInformation.gender"
+          id="female"
+          value="Female"
+        />
+        <br />
+        <label for="do not wish to provide">Do not wish to provide</label>
+        <input
+          type="radio"
+          v-model="costumerInformation.gender"
+          id="not provide"
+          value="Do not wish to provide"
+        />
       </form>
     </section>
-    <button type="submit">
+    <button type="submit" v-on:click="printValues()">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png"
         style="width: 20px"
@@ -117,9 +94,12 @@
 <script>
 import Burger from "../components/OneBurger.vue";
 import io from "socket.io-client";
-import menu from '../assets/menu.json';
+import menu from "../assets/menu.json";
+import { ref } from "vue";
 
 const socket = io();
+
+const fullname = ref("Hej");
 
 function MenuItem(cal, nm, url, gluten, lactose) {
   this.name = nm;
@@ -129,7 +109,7 @@ function MenuItem(cal, nm, url, gluten, lactose) {
   this.containsLactose = lactose;
 }
 
-let hellBurger = new MenuItem(
+const hellBurger = new MenuItem(
   1000,
   "HellBurger",
   "https://www.ocregister.com/wp-content/uploads/2022/03/OCR-L-FirstStBurger-WBOX-0310-1-1.jpg?w=620",
@@ -137,7 +117,7 @@ let hellBurger = new MenuItem(
   true
 );
 
-let heavenBurger = new MenuItem(
+const heavenBurger = new MenuItem(
   10,
   "HeavenBurger",
   "https://2.bp.blogspot.com/-iuA4duilEos/TvSUrELIbVI/AAAAAAAAAVI/Q42RuNGuFPM/s1600/Screen+shot+2011-12-23+at+9.43.45+AM.png",
@@ -145,7 +125,7 @@ let heavenBurger = new MenuItem(
   false
 );
 
-let leprechaunBurger = new MenuItem(
+const leprechaunBurger = new MenuItem(
   500,
   "LeprechaunBurger",
   "https://www.burger.vn/wp-content/uploads/2023/05/NAshville-burger-BCB-burgers-Saigon-VIetnam-1-1-500x400.png",
@@ -153,7 +133,7 @@ let leprechaunBurger = new MenuItem(
   false
 );
 
-const burgerArray = [hellBurger ,  heavenBurger ,  leprechaunBurger ];
+const burgerArray = [hellBurger, heavenBurger, leprechaunBurger];
 
 export default {
   name: "HomeView",
@@ -162,10 +142,21 @@ export default {
   },
   data: function () {
     return {
-      burgers: menu
+      burgers: menu,
+
+      costumerInformation: {
+        fullname: "",
+        email: "",
+        street: "",
+        payment: "",
+        gender: "",
+      },
     };
   },
   methods: {
+    printValues: function () {
+      console.log(this.costumerInformation);
+    },
     getOrderNumber: function () {
       return Math.floor(Math.random() * 100000);
     },
@@ -256,8 +247,8 @@ h1 {
 }
 
 .BurgerName {
-  text-align:center;
-  margin-left:-300px;
+  text-align: center;
+  margin-left: -300px;
 }
 
 .burgerDescription {
@@ -267,7 +258,6 @@ h1 {
 
 .burgerDisplay {
   margin-right: 100px;
-
 }
 
 #Allergies {
