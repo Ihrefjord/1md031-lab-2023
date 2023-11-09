@@ -19,6 +19,7 @@
           v-for="burger in burgers"
           v-bind:key="burger.name"
           v-bind:burger="burger"
+          v-on:orderedBurger="addToOrder($event)"
         />
       </section>
     </section>
@@ -79,6 +80,7 @@
         />
       </form>
     </section>
+    <div id="map" v-on:click="addOrder">click here</div>
     <button type="submit" v-on:click="printValues()">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png"
@@ -151,10 +153,12 @@ export default {
         payment: "",
         gender: "",
       },
+      orderedBurgers: {},
     };
   },
   methods: {
     printValues: function () {
+      console.log(this.orderedBurgers);
       console.log(this.costumerInformation);
     },
     getOrderNumber: function () {
@@ -173,6 +177,9 @@ export default {
         },
         orderItems: ["Beans", "Curry"],
       });
+    },
+    addToOrder: function (event) {
+      this.orderedBurgers[event.name] = event.amount;
     },
   },
 };
@@ -278,6 +285,10 @@ h1 {
 button:hover,
 input[type="radio"] {
   background-color: lightslategrey;
+  cursor: pointer;
+}
+
+#map {
   cursor: pointer;
 }
 
