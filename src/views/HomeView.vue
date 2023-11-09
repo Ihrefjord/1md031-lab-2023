@@ -40,12 +40,6 @@
           placeholder="E-mail address"
         />
 
-        <p>Street</p>
-        <input v-model="costumerInformation.street" placeholder="Street name" />
-
-        <p>House</p>
-        <input v-model="costumerInformation.house" placeholder="House number" />
-
         <p>Choose Payment Option:</p>
         <select v-model="costumerInformation.payment">
           <option>Credit Card</option>
@@ -80,8 +74,20 @@
         />
       </form>
     </section>
-    <div id="map" v-on:click="addOrder">click here</div>
-    <button type="submit" v-on:click="printValues()">
+
+    <section id="mapBox">
+      <div id="map" v-on:click="setLocation">
+        <div
+          v-bind:style="{
+            left: this.location.x + 'px',
+            top: this.location.y + 'px',
+          }"
+        >
+          T
+        </div>
+      </div>
+    </section>
+    <button type="submit" v-on:click="submitOrder">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png"
         style="width: 20px"
@@ -135,8 +141,6 @@ const leprechaunBurger = new MenuItem(
   false
 );
 
-const burgerArray = [hellBurger, heavenBurger, leprechaunBurger];
-
 export default {
   name: "HomeView",
   components: {
@@ -149,34 +153,43 @@ export default {
       costumerInformation: {
         fullname: "",
         email: "",
-        street: "",
         payment: "",
         gender: "",
       },
+
       orderedBurgers: {},
+
+      location: {
+        x: 0,
+        y: 0,
+      },
     };
   },
   methods: {
-    printValues: function () {
-      console.log(this.orderedBurgers);
-      console.log(this.costumerInformation);
-    },
-    getOrderNumber: function () {
-      return Math.floor(Math.random() * 100000);
-    },
-    addOrder: function (event) {
+    setLocation: function (event) {
       var offset = {
         x: event.currentTarget.getBoundingClientRect().left,
         y: event.currentTarget.getBoundingClientRect().top,
       };
+      this.location.x = event.clientX - 10 - offset.x;
+      this.location.y = event.clientY - 10 - offset.y;
+    },
+    submitOrder: function () {
       socket.emit("addOrder", {
         orderId: this.getOrderNumber(),
         details: {
-          x: event.clientX - 10 - offset.x,
-          y: event.clientY - 10 - offset.y,
+          x: this.location.x,
+          y: this.location.y,
+          name: this.costumerInformation.fullname,
+          email: this.costumerInformation.email,
+          payment: this.costumerInformation.payment,
+          gender: this.costumerInformation.gender,
         },
-        orderItems: ["Beans", "Curry"],
+        orderItems: this.orderedBurgers,
       });
+    },
+    getOrderNumber: function () {
+      return Math.floor(Math.random() * 100000);
     },
     addToOrder: function (event) {
       this.orderedBurgers[event.name] = event.amount;
@@ -289,7 +302,27 @@ input[type="radio"] {
 }
 
 #map {
-  cursor: pointer;
+  cursor: crosshair;
+  height: 1078px;
+  width: 1920px;
+  position: relative;
+  background: url("../../public/img/polacks.jpg");
+}
+
+#map div {
+  position: absolute;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+#mapBox {
+  overflow: scroll;
+  height: 400px;
+  width: auto;
 }
 
 button {
