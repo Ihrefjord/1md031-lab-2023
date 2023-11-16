@@ -2,9 +2,9 @@
   <div class="{{ burger.name }}" style="display: inline-block">
     <h3 class="BurgerName">{{ burger.name }}</h3>
     <img v-bind:src="burger.imageURL" />
-    <section>
-      <p class="burgerDescription">In Cart: {{ amountOrdered }}</p>
+    <section id="addBurgerSection">
       <button v-on:click="addOneOrder()">+</button>
+      <p class="burgerDescription" id="amountAdded">{{ amountOrdered }}</p>
       <button v-on:click="removeOneOrder()">-</button>
     </section>
     <section class="burgerDescription">
@@ -46,4 +46,15 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+#addBurgerSection {
+  display: grid;
+  grid-auto-flow: column;
+  width: 40px;
+  align-content: center;
+}
+
+#amountAdded {
+  text-align: center;
+}
+</style>
